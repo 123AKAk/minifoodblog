@@ -5,7 +5,7 @@
 
   <!-- Login FormStart -->
   
-  <section class="section auth-section bg-cover" style="background-image: url('assets/img/bg/3.jpg')">
+  <section class="section auth-section bg-cover">
       <div class="container">
       <form class="auth-form light-bg" method="POST" action="includes/allcodes.php" style="background-image: url('assets/img/bg/5.jpg')" enctype="multipart/form-data">
         <?php
