@@ -138,7 +138,7 @@
                 {
           ?>
           <div class="comments-list">
-            <h4><?php echo $rowcount = mysqli_num_rows( $result );?> Comment(s)</h4>
+            <h4><?php echo $rowcount = mysqli_num_rows($sresult);?> Comment(s)</h4>
             <ul>
             <?php
               // output data of each row
@@ -148,28 +148,32 @@
                 $sdate = $ssales_date->format('d')." ".$ssales_date->format('M')."' ". $ssales_date->format('y');
             ?>
               <li class="comment-item">
-                <img src="assets/img/people/people-1.jpg" alt="comment author">
+                <?php
+                    $duserid = $srow["UserId"];
+                    $dsql = "SELECT * FROM user WHERE Id='$duserid'";
+                    $dresult = $conn->query($dsql);
+                    if ($dresult->num_rows > 0) 
+                    {
+                      // output data of each row
+                      while($drow = $dresult->fetch_assoc()) 
+                      {
+                        
+                      
+                  ?>
+                <img src="uploads/<?php echo $drow["Profile_img"];?>" alt="comment author">
                 <div class="comment-body">
                   <h5>
-                    <?php
-                      $duserid = $srow["UserId"];
-                      $dsql = "SELECT * FROM user WHERE Id='$duserid'";
-                      $dresult = $conn->query($dsql);
-                      if ($dresult->num_rows > 0) 
-                      {
-                        // output data of each row
-                        while($drow = $dresult->fetch_assoc()) 
-                        {
-                          echo $drow["Firstname"];
-                        }
-                      }
-                    ?>
+                    <?php echo $drow["Firstname"];?>
                   </h5>
                   <span>Posted on: <?php echo $sdate; ?></span>
                   <p>
-                    <?php echo $srow["Text"] ?>
+                    <?php echo $srow["Text"]; ?>
                   </p>
                 </div>
+                <?php 
+                      }
+                  }
+                ?>
               </li>
             </ul>
           </div>

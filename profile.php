@@ -43,7 +43,6 @@
   <div class="section section-padding single-post-1">
     <div class="container">
       <?php
-          include_once 'includes/connect.php';
           $userid = $_GET['id'];
           $sql = "SELECT * FROM user WHERE Id='$userid'";
           $result = $conn->query($sql);

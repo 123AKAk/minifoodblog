@@ -87,21 +87,21 @@
                 </div>
               </div>
               <div class="post-categories">
-                <a href="category.php?catid=<?php echo $row["CategoryId"]; ?>">
-                <?php
-                  $catid = $row["CategoryId"];
-                  $bsql = "SELECT * FROM category WHERE Id='$catid'";
-                  $bresult = $conn->query($bsql);
-                  if ($bresult->num_rows > 0) 
-                  {
-                    // output data of each row
-                    while($brow = $bresult->fetch_assoc()) 
+                  <a href="category.php?catid=<?php echo $row["CategoryId"]; ?>">
+                  <?php
+                    $catid = $row["CategoryId"];
+                    $bsql = "SELECT * FROM category WHERE Id='$catid'";
+                    $bresult = $conn->query($bsql);
+                    if ($bresult->num_rows > 0) 
                     {
-                      echo $brow["Title"];
+                      // output data of each row
+                      while($brow = $bresult->fetch_assoc()) 
+                      {
+                        echo $brow["Title"];
+                      }
                     }
-                  }
-                ?>
-                </a>
+                  ?>
+                  </a>
               </div>
               <div class="post-body">
                 <h5 class="post-title">

@@ -28,9 +28,26 @@
         <li class="menu-item">
           <a href="register.php">Register</a>
         </li>
-        <li class="menu-item">
+        <?php
+          if(isset($_SESSION['admin']) || isset($_SESSION['user']))
+          {
+        ?>
+            <li class="menu-item">
             <a href="dashboard.php">Dashboard</a>
-        </li>
+          </li>
+        <?php
+          }
+        ?>
+        <?php
+          if(isset($_SESSION['admin']) || isset($_SESSION['user']))
+          {
+        ?>
+          <li class="menu-item">
+            <a href="logout.php">Logout</a>
+          </li>
+        <?php
+          }
+        ?>
       </ul>
     </div>
   </aside>
